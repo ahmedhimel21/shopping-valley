@@ -1,7 +1,6 @@
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 
-export default function Product({ product }) {
-  console.log(product);
+export default function Product({ product, handleAddToCart }) {
   const { image, category, title } = product;
   return (
     <>
@@ -17,7 +16,12 @@ export default function Product({ product }) {
           <h2 className="card-title">{category}</h2>
           <p>{title}</p>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">Add to cart</button>
+            <button
+              onClick={() => handleAddToCart(product)}
+              className="btn btn-primary"
+            >
+              Add to cart
+            </button>
           </div>
         </div>
       </div>
@@ -25,5 +29,6 @@ export default function Product({ product }) {
   );
 }
 Product.propTypes = {
-  product: PropTypes.object.isRequired
-}
+  product: PropTypes.object.isRequired,
+  handleAddToCart: PropTypes.func.isRequired
+};
